@@ -11,4 +11,35 @@
       - onPress Event 
    - StyleSheet
       - USed to Define the CSS
-         - Bound to datatype aka Static Type   
+         - Bound to datatype aka Static Type
+
+- Design the Component
+   - Plan for UI Components from RN
+      - Layout
+         - View
+         - SafeView (iOS)
+      - Interactivity Components
+         - TextInput
+         - Pressable
+         - TouchableOpacity
+      - Collection aka List Components, aka Data Bound Components 
+         - FlatList
+            - Complex Component Container
+         - ScrollableList
+         - SectionList
+      - Events BAsed
+         - Button
+         - ActivityIndicator   
+         - Pressable (RN 0.70+)
+         - TouchableOpacity
+         - Modal
+      - Storage Services 
+         - AsyncStorage    
+      - External Calls / Networking, the 'useEffect()'
+         - HTTP
+         - Socket
+            - ws + http
+         - Stream      
+            - stream + http  
+      - Navigation
+         - Based on SPA        

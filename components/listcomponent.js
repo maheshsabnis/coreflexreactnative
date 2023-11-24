@@ -44,7 +44,8 @@ const ListComponent = () => {
                 />
             </Text>
            
-           )} 
+           ) }
+            
          />
          <Image source={require('./../imgs/first.png')}
            style={styles.img}/>
