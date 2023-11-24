@@ -13,6 +13,9 @@ import ModalComponent from './components/modalcomponent';
 import RNModalComponent from './components/rnmodalcomponent';
 import StorageComponent from './components/storagecomponent';
 import TouchableOpacityComponent from './components/touchableopacitycomponent';
+
+import BlogsComponent from './uiapps/blogscomponent';
+
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => TouchableOpacityComponent);
+AppRegistry.registerComponent(appName, () => BlogsComponent);
