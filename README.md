@@ -1,5 +1,32 @@
 # React Native
 
+- Component Syntaxes
+
+   - Traditional Funcaitonal Component
+````javascript
+function MyComponent(){
+
+   return ();
+}
+````
+
+   - Constant FUnction Expression
+````javascript
+   const MyComponent=()=>{
+
+      return ();
+   }
+````
+   - Const Functional Component Placeholder
+      - the component is a Self-COntained HTML object that is called for Re-Usability
+````javascript
+   const MyComponent=()=>(
+
+   ); 
+
+````
+
+
 - Standard UI Components
    - View
       - Container aka Layout UI Element
@@ -33,8 +60,21 @@
          - Pressable (RN 0.70+)
          - TouchableOpacity
          - Modal
+      - Custom UI
+         - Plan UI requirements and check if it is designed and developed using standard UI Elements
+         - Collect the required data and its schema so that you can read its properties and value of each property to Generate UI
+         - Define Behavior (Event based methods) so that the user of this Custom UI can extract data from it
+
       - Storage Services 
          - AsyncStorage    
+            - An Object to store the data in Key/Value Pair
+            - The data is Stored in JSON format
+            - The Access is complete asynchronous w/o blocking the UI Thread
+               - setItem('KEY', value)
+               - getItem('Key')
+               - clear()
+                  - Remove all entries
+               - npm install @react-native-async-storage/async-storage   
       - External Calls / Networking, the 'useEffect()'
          - HTTP
          - Socket

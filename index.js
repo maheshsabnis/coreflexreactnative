@@ -17,5 +17,6 @@ import TouchableOpacityComponent from './components/touchableopacitycomponent';
 import BlogsComponent from './uiapps/blogscomponent';
 
 import {name as appName} from './app.json';
+import UtilizerComponent from './uiapps/utilizercomponent';
 
-AppRegistry.registerComponent(appName, () => BlogsComponent);
+AppRegistry.registerComponent(appName, () => UtilizerComponent);
