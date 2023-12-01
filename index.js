@@ -18,5 +18,6 @@ import BlogsComponent from './uiapps/blogscomponent';
 
 import {name as appName} from './app.json';
 import UtilizerComponent from './uiapps/utilizercomponent';
-
-AppRegistry.registerComponent(appName, () => UtilizerComponent);
+import TextInputParentComponent from './uiapps/textInputparentcomponent';
+/* The Component is Registered as Root and this will be contineously under Execution */
+AppRegistry.registerComponent(appName, () => TextInputParentComponent);

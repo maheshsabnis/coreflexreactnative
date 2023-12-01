@@ -62,9 +62,16 @@ function MyComponent(){
          - Modal
       - Custom UI
          - Plan UI requirements and check if it is designed and developed using standard UI Elements
+            - Allows you to choose the standard UI for the custom UI requirements
+               - Standard UI Elements has their own
+                  - Properties
+                     - Used to Set values received from Parent Component and helps in Rendering the UIs
+                  - Events
+                     - Used to Emit data from this Custom UI to its Parent
          - Collect the required data and its schema so that you can read its properties and value of each property to Generate UI
+            - Used for Rendering the UI
          - Define Behavior (Event based methods) so that the user of this Custom UI can extract data from it
-
+            - A Custom Method that will be invoked based on standard Event and will be responsible to Emit data to the parent
       - Storage Services 
          - AsyncStorage    
             - An Object to store the data in Key/Value Pair
