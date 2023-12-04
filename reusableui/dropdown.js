@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable prettier/prettier */
 import { isValidElement, useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from "react-native";
 
 const Dropdown = (props) => {
     /* The local state that will be used to decide if the Drodown can be expended */
@@ -11,10 +11,12 @@ const Dropdown = (props) => {
     const expand = () => setVisibility(!isVisible);
     
     const selectedValue = (v) => {
+        
+        setSelectedOption(v);
         props.selectedOption(v);
         /* Collapse the View which is showing options */
         setVisibility(false);
-        setSelectedOption(v);
+       
     };
 
 
@@ -25,7 +27,7 @@ const Dropdown = (props) => {
     return (
         <View style={styles.ddlView}>
             <TouchableOpacity style={styles.ddlHeader} onPress={expand}>
-                <Text style={styles.textHeader}>{props.title || selectedOption}</Text>
+                <Text style={styles.textHeader}>{selectedOption||props.title }</Text>
             </TouchableOpacity>
             {
                 isVisible && <View style={styles.viewDdlOptions}>

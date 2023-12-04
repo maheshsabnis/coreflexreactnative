@@ -34,3 +34,15 @@
     - The FormComponent will also have a 'Save' Button, that will Emit values for eachkey to parent component and the parent component should save this data in 'AsyncStorage' 
 
 2. Modify the Dropdown to show the Filterbased Search along with expand, based on the search the option should be selected and shown in header the 'Select Actor' must be replaced by the selected / filtered matched value (Today) 
+
+
+
+# Date: 04-Dec-2023
+
+1. Modiy the ApiCallComponent based on the following needs
+    - Create TextInput for Category Properties
+    - Once the CategoryId is entered in the TextInput and if it is already present the Generate the Error Message and change the border-color of the TextInput to Red
+    - The Save Button will be enabled only all the values are entered for Category
+    - CategoryName Must start from UpperCase Character
+    - The BasePrice should not be -ve
+    - Show the Category List in the FlatList     

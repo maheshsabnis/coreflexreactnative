@@ -82,8 +82,51 @@ function MyComponent(){
                - clear()
                   - Remove all entries
                - npm install @react-native-async-storage/async-storage   
+         - Component Update Conditions
+            - useState(initial Value, SetState Callback)
+               - The initial value will be updated based on the SetState 
+               - useReducer()
+               - useRef()
+               - useCallback() 
+            - props
+               - New value for the props will be send by Parent to Child
+
       - External Calls / Networking, the 'useEffect()'
          - HTTP
+            - Promise Object, ES 6
+               - A Container that is responsible to Manage Async Code Execution
+                  - HTTP
+                  - Resource Access for Native Device Services
+               - Promise() Class
+                  - then()
+                     - Represent a Successful Execution
+                  - catch()
+                     - Error Occurred during Execution
+                  - Promise(SYNC).then(ASYNC).catch(ASYNC); 
+                     - .then().then().then().then()......
+                     - Promise.all([.]);     
+            - AJAX / Ajax (Retired)
+            - The 'useEffect()' Hook
+               - Invoked for Mounting of the Component means will be executed when the Compoenent complets its mounting
+               - Will execute a logic when the Component is being UnMounted
+               - Will inform to the Rendering that the state is updated, Rendering is done based on update so stop the execution
+````javascript
+   useEffect(()=>{Code to execute for post mounting return()=>Code to execute during unmounting},[DEPENDENCY-ARRAY])
+      - DEPENDENCY-ARRAY, once the state specifoed in this array is changed stop the execution  
+````
+         - use the 'axios' Library for HTTP Calls
+            - Promise based library
+            - npm install --save axios
+               - get(), post(), pue(), delete()
+                  - All these methods returns Promise of the type AxiosResponse
+````javascript
+  Promise<AxiosResponse<T>>
+  /* T is the type of data that will be returned */
+
+````
+
+         - https://catprdapi.azurewebsites.net/api/Category
+         
          - Socket
             - ws + http
          - Stream      
