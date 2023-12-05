@@ -46,3 +46,10 @@
     - CategoryName Must start from UpperCase Character
     - The BasePrice should not be -ve
     - Show the Category List in the FlatList     
+
+ # Date: 05-Dec-2023
+
+ 1. Use the AppState object for the following operations
+    - When the App is in Active State, the app should be contineously fetching data from the REST APIs and store it in AsyncStorage
+    - But when the App is in Background/Inactive the REST API call has to stop and when the App is active again resule the REST API call, but make sure that the duplicate data is not stored in the AsyncStorage
+2. Use the BackHanler to clear AsyncStorage          

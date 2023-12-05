@@ -20,5 +20,8 @@ import {name as appName} from './app.json';
 import UtilizerComponent from './uiapps/utilizercomponent';
 import TextInputParentComponent from './uiapps/textInputparentcomponent';
 import ApiCallComponent from './uiapps/apicallcomponent';
+import AppStateExample from './uiapps/appstatecomponent';
+import BackHandlerComponent from './uiapps/backhandlercomponent';
+import AppStateFunctionalComponent from './uiapps/appstatefunctionalcomponent';
 /* The Component is Registered as Root and this will be contineously under Execution */
-AppRegistry.registerComponent(appName, () => ApiCallComponent);
+AppRegistry.registerComponent(appName, () => BackHandlerComponent);

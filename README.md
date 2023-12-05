@@ -131,5 +131,11 @@ function MyComponent(){
             - ws + http
          - Stream      
             - stream + http  
+      - Device State Events with Turbo Modules
+         - AppState Object
+            - App Lifecycle based on the Devive Control Events
+         - BackHandler Object  
+            - Interacts with the Device Back Button    
+            
       - Navigation
          - Based on SPA        
