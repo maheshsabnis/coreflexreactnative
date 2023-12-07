@@ -139,3 +139,53 @@ function MyComponent(){
             
       - Navigation
          - Based on SPA        
+
+# Redux
+- redux, replaced by @reduxjs/toolkit
+   - action
+      - what has happened
+      - the event dispatched from Component 
+      - This will create 'action creator'
+         - A function that will accept input as data send by the event
+         - Return output action using ACTION_TYPE
+            - ACTION_TYPE
+               - A JSON object having two properties
+                  - type: Output Action Name
+                  - payload: The output data
+         - For Synchronous Actions the result is sponteneous (immediate)
+         - For Async execution of the Action Creator the output will be based on 'Middleware?'       
+   - reducer
+      - A Pure function
+      - This accepts 'initialState' and 'dispatched action' as input parameters
+      - BAsed on the 'dispateched action' the state is updated in store and the lates store state is returned
+      - Technically
+         - We can have mutiple reducers
+         - One Reducer function can call other reducer function
+         - (Caution): Don't write complex logic in Reducer function
+            - e.g. HTTP Calls, Large Array Processing, DateTime Operations
+   - store
+      - The Single Source of Truth
+      - A Global Object that is bound with the 'Container-Component' on React (React-Native) application
+   - Object  and Functions
+      - createStore(), deprecated by configureStore()
+      - configureStore(reducer, enhancer)
+         - USed to define a store at global level
+         - the 'reducer' parameter informs to the store that 'they are contineously monitoring all actions those are dispatched'
+         - the 'enhancer' (NOT RECOMMENDED IN PRODUCTION) 
+            - a store simulator
+            - If the Middlewares are used then this is mandatory
+      - combineReducers({Accepts Multiplem Reducers and load them at once at global level})
+         - This will make it easy to add/modify reducer functions  
+         - Technically
+            - we can create a single reducer function as JavaScript Object Literal            
+- react-redux
+   - Hooks to connect React (React-Native) to Redux    
+   - connect(), deprecated
+      - Used to connect the store with Components   
+   - useDispatch()
+      - used to dispatch an action from View (Component)     
+   - useSelector()
+      - used to subscribe the store from View
+   - Provider
+      - a Container Component that has 'store' property to subscribe to application store
+      - This container manages all children component and provides an access of store to them   
