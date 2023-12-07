@@ -224,4 +224,12 @@ export const empsReducer = createReducer(initialState, (builder)=>{
       - used to subscribe the store from View
    - Provider
       - a Container Component that has 'store' property to subscribe to application store
-      - This container manages all children component and provides an access of store to them   
+      - This container manages all children component and provides an access of store to them  
+
+   - Process
+      - ReduxProviderComponent used 'Provider' which is configured with 'store', this store is configured used 'reducer'. The 'reducer' will monitor every action dispatched by component
+      - The 'Provider' is executing 'MainReduxComponent' and hence the 'store' is available to 'MainReduxComponent' and all of its children components those are 'AddEmpComponent' and 'ListEmployeesComponent'
+      - The 'MainReduxComponent' is using the 'useSelector()' to subscribe to 'store' to query data from the store
+      - The 'AddEmplComponent' uses 'useDispatch()' to dispatch 'addEmp' action and pass 'emp' to it. The 'addEmp' action updates the 'emp' object and return it
+      - the 'reducer' monitor the  'addEmp' action  and wherever return payload from it is updated into the store
+      - Since the MainReduxComponetn os subscribe to the store, its read data from store and pass it to ListEmployeesComponent using 'props' and the ListEmployeesComponent shops the data   
