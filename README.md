@@ -177,7 +177,43 @@ function MyComponent(){
       - combineReducers({Accepts Multiplem Reducers and load them at once at global level})
          - This will make it easy to add/modify reducer functions  
          - Technically
-            - we can create a single reducer function as JavaScript Object Literal            
+            - we can create a single reducer function as JavaScript Object Literal   
+   - @reduxjs/toolkit (latest to be used for Modern Apps)
+      - createAction()
+````javascript
+/*
+parameter 1: ADD_EMP: Action Type, that represents an action that is dispatched
+parameter 2: Callback function that represents the Action Creator Logic
+Returns : the 'payload' aka the modified output parameter
+*/
+export const addEmp= createAction(ADD_EMP, (emp)=>{
+    console.log(`In Action ${JSON.stringify(emp)}`);
+   emp.EmpName = emp.EmpName.toUpperCase(); 
+   return {
+      payload: emp
+   }
+});
+````
+      - createReducer()
+````javascript
+/*
+1. Parameter 1: Initial State
+2. Parameter 2: The callback function that is accepting a reducer builder object which is the logic for reducer
+   - The builder object has the 'addCase()' method 
+      - Parameter 1: The Output Action for the input action e.g. addEmp
+      - Parameter 2: A Callback with following parameters
+         - state: to be updated in store
+         - action: the action which is dispatched from the Component 
+*/
+export const empsReducer = createReducer(initialState, (builder)=>{
+   
+    builder.addCase(addEmp,(state,action)=>{
+         state.emps.push(action.payload);
+         console.log(`in reducer ${JSON.stringify(state)}`);
+    })
+}); 
+````
+      - configureStore()                  
 - react-redux
    - Hooks to connect React (React-Native) to Redux    
    - connect(), deprecated
