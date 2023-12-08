@@ -233,3 +233,79 @@ export const empsReducer = createReducer(initialState, (builder)=>{
       - The 'AddEmplComponent' uses 'useDispatch()' to dispatch 'addEmp' action and pass 'emp' to it. The 'addEmp' action updates the 'emp' object and return it
       - the 'reducer' monitor the  'addEmp' action  and wherever return payload from it is updated into the store
       - Since the MainReduxComponetn os subscribe to the store, its read data from store and pass it to ListEmployeesComponent using 'props' and the ListEmployeesComponent shops the data   
+
+
+    # SAGA
+    - redux-saga
+      - npm install saga redux-saga
+   - Define Action Constants
+````javascript
+export const ADD_CATEGORY = 'ADD_CATEGORY';
+export const ADD_CATEGORY_SUCCESS = 'ADD_CATEGORY_SUCCESS';
+export const LIST_CATEGORIES = 'LIST_CATEGORIES';
+export const LIST_CATEGORIES_SUCCESS = 'LIST_CATEGORIES_SUCCESS';
+````
+
+   - define actions
+
+````javascript
+/* Define Initiate and Success Actions */
+import { createAction } from "@reduxjs/toolkit";
+import { ADD_CATEGORY,LIST_CATEGORIES} from "../constants";
+
+
+export const addCategory = createAction(ADD_CATEGORY,(category) => {
+    return {
+        payload: category
+    };
+});
+
+export const listCategory = createAction(LIST_CATEGORY,() => {
+    return {
+        payload: 'List Category Request is initiated'
+    };
+});
+
+
+
+````
+
+    - Create Views
+    - Add Category View
+````javascript
+import { useState } from "react";
+import { View,Text,TextInput,Button } from "react-native";
+import { useDispatch } from "react-redux";
+import { styles } from "../../uiapps/styles";
+import {addCategory} from './../actions';
+
+const AddCategoryComponent = () => {
+    const [category,setCategory] = useState({CategoryId:'0', CategoryName:'',BasePrice:'0'});
+    const dispatch = useDispatch();
+    const addCategory =() =>{
+        /* Dispatch Action */
+        dispatch(addCategory(category))
+    };
+    return (
+        <View style={styles.container}>
+            <Text style={styles.text}>Category Id:</Text>
+            <TextInput value={category.CategoryId} style={styles.textInput}
+              onChangeText={text=>setCategory({...category, CategoryId:text})}
+            />
+              <Text style={styles.text}>Category Name:</Text>
+            <TextInput value={category.CategoryName} style={styles.textInput}
+              onChangeText={text=>setCategory({...category, CategoryName:text})}
+            />
+              <Text style={styles.text}>Base Price:</Text>
+            <TextInput value={category.BasePrice} style={styles.textInput}
+              onChangeText={text=>setCategory({...category, BasePrice:text})}
+            />
+            <Button title="Save" onPress={addCategory}/>
+        </View>
+    );
+};
+
+export default AddCategoryComponent;
+
+
+````
