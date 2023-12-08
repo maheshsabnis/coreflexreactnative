@@ -9,7 +9,7 @@ export const addCategory = createAction(ADD_CATEGORY,(category) => {
     };
 });
 
-export const listCategory = createAction(LIST_CATEGORY,() => {
+export const listCategory = createAction(LIST_CATEGORIES,() => {
     return {
         payload: 'List Category Request is initiated'
     };
