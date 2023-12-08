@@ -7,9 +7,16 @@ import {addCategory} from './../actions';
 const AddCategoryComponent = () => {
     const [category,setCategory] = useState({CategoryId:'0', CategoryName:'',BasePrice:'0'});
     const dispatch = useDispatch();
-    const addCategory =() =>{
+
+    const addCategoryData =() =>{
         /* Dispatch Action */
-        dispatch(addCategory(category))
+
+        const cat = {
+          CategoryId: parseInt(category.CategoryId),
+          CategoryName: category.CategoryName,
+          BasePrice: parseInt(category.BasePrice)
+        };
+        dispatch(addCategory(cat))
     };
     return (
         <View style={styles.container}>
@@ -25,7 +32,7 @@ const AddCategoryComponent = () => {
             <TextInput value={category.BasePrice} style={styles.textInput}
               onChangeText={text=>setCategory({...category, BasePrice:text})}
             />
-            <Button title="Save" onPress={addCategory}/>
+            <Button title="Save" onPress={addCategoryData}/>
         </View>
     );
 };

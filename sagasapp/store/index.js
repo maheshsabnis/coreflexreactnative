@@ -6,21 +6,26 @@
  This package provide 'creareSagaMiddleware()' method
 */
 
-import createSagaMiddleware from "@redux-saga/core";
+// import createSagaMiddleware from "@redux-saga/core";
+import createSagaMiddleware from 'redux-saga';
 import {reducers} from './../reducres';
-import { applyMiddleware, configureStore } from "@reduxjs/toolkit";
+import {  configureStore } from "@reduxjs/toolkit";
 import rootSaga  from "../effects";
 /* an object that will be used to create and initialize the Middleware are root level */
 const sagaMiddleware = createSagaMiddleware();
 
 /* COnfigure store */
-
-export const store = configureStore({
+/* getDefaultMiddleware: Implicit method that will inform RN that the Async calls are initiated 
+...getDefaultMiddleware(): Create an middleware array object will it will add muktiple middlewares in it 
+*/
+const store = configureStore({
   reducer: reducers,
-  middleware:sagaMiddleware,
+  middleware:(getDefaultMiddleware) => [...getDefaultMiddleware(), sagaMiddleware],
 });
 
 /* Run the middleware at global level so that they will monitor all actions */
 
 sagaMiddleware.run(rootSaga);
+
+export default store;
 

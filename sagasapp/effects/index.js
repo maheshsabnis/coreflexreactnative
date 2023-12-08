@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* Create a Saga Middleware */
 
 /*
@@ -6,7 +7,7 @@
 
 /* Import the Saga Object Model from redux-saga */
 
-import {takeLatest, call, put,all} from 'redux-saga/effects';
+import {takeLatest, call, put, all} from 'redux-saga/effects';
 
 /* import Action COnstants */
 
@@ -28,7 +29,7 @@ function loadCategories(){
 function saveCategory(category) {
     let serv = new HttpService();
     /* Subscribing to the Promise returnd by the HTTP Call */
-    let response = serv.postCategory().then(resp => resp.data);
+    let response = serv.postCategory(category).then(resp => resp.data);
     /* return the resolved promise */
     return Promise.resolve(response);
 }
@@ -45,6 +46,7 @@ function* addCategorySuccessOutputGeneraor(action){
     console.log(`Received data for POST ${JSON.stringify(category)}`);
     /* call will invoke the saveCategory and pass category object to it */
     const response = yield call(saveCategory, category);
+    console.log(`The POST Response : ${JSON.stringify(response)}`);
     /* Diapatch the success */
     yield put({
         type: ADD_CATEGORY_SUCCESS,
@@ -56,6 +58,7 @@ function* addCategorySuccessOutputGeneraor(action){
 }
 
 function* addCategoryInputGenerator(){
+  console.log(`In Add Category Input Saga`);
     /* the action to be dispatched for input 
       since the ADD_CATEGORY represent an action creator as
       addCategory that accepts the payload as 'category'
@@ -69,6 +72,7 @@ function* addCategoryInputGenerator(){
 
 function* getCategoriesSuccessOutputGenerator(){
   try{
+    console.log(`In Output Generator`);
     /* Call the method to get Categories */
     const response = yield call(loadCategories);
     console.log(`Ala ka data ${JSON.stringify(response)}`);
@@ -82,6 +86,7 @@ function* getCategoriesSuccessOutputGenerator(){
   }
 }
 function* getCategoriesInputGenerator(){
+  console.log('Received List Request');
   yield takeLatest(LIST_CATEGORIES, getCategoriesSuccessOutputGenerator);
 }
 
@@ -89,5 +94,6 @@ function* getCategoriesInputGenerator(){
 /* Collect all input generator and initialize them at global level in store */
 
 export default function* rootSaga(){
+  console.log(`In Root Saga`);
   yield all([getCategoriesInputGenerator(), addCategoryInputGenerator()]);
 } 
